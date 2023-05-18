@@ -21,6 +21,7 @@ except ModuleNotFoundError:
     exit()
 from colorama import *
 colorama.init(autoreset=True)
+
 from update_check import isUpToDate, update
 if isUpToDate('wifi.py', 'https://raw.githubusercontent.com/spider863644/Wifi-Hack/main/wifi.py') == False:
     print(Fore.RED + "This version is outdated, another version is been released\nWill start updating soon")
@@ -29,16 +30,16 @@ if isUpToDate('wifi.py', 'https://raw.githubusercontent.com/spider863644/Wifi-Ha
     print(Fore.GREEN + "Updated\nRun tool again")
     t.sleep(3)
     exit()
-#if platform.system() != "Windows":
-#	print(Fore.RED + "[!]This tool is not compatible with your operating system\nUse this tool on a windows OS ")
-#	t.sleep(3)
-#	exit()
-#pwdfile = open("config.txt", "r")
-#pwd = input(Fore.YELLOW + "Enter activation code: ")
-#if pwd != pwdfile.read():
-#	print(Fore.RED + "Incorrect Activation code☹️🤓")
-#	t.sleep(3)
-#	exit()
+if platform.system() != "Windows":
+	print(Fore.RED + "[!]This tool is not compatible with your operating system\nUse this tool on a windows OS ")
+	t.sleep(3)
+	exit()
+pwdfile = open("config.txt", "r")
+pwd = input(Fore.YELLOW + "Enter activation code: ")
+if pwd != pwdfile.read():
+	print(Fore.RED + "Incorrect Activation code☹️🤓")
+	t.sleep(3)
+	exit()
 print(Fore.RED + "Warning[!]: Dear user,you may face error while using this version\nSorry in advance for any incovinience\n")
 t.sleep(3)
 def loop():
