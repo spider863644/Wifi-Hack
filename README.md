@@ -2,15 +2,26 @@
 A hacking tool for brute forcing WiFi password
 This version may not work properly and I'm releasing this for testing purpose only
 ## How to install WiFi-Hack 
-Click on the link below to download WiFi-Hack.<br>
-https://www.mediafire.com/file/6uu43zn6iga7m1a/wifi.py/file
-## How to use WiFi-Hack
-After downloading it, try opening the file with vscode (recommended)
-<br>Turn on your mobile data and turn on WiFi <br>
-
-Choose option 2 to display available network and copy the SSID
-<br>Choose option 1 and paste the SSID<br>
-Enter wordlist path and name<br>[Example]
+### Step1.
+Click here https://git-scm.com/downloads to install git that is compatible with your windows and setup ur GitHub<br><br>
+### Step2.
+Open command prompt and type
+```python ```, if python isn't installed, it will direct you to install python on your system and once you have installed python, just set it up.<br><br>
+### Step3. 
+Close command prompt and open it again and type the following command
 ```
-emulated/0/download/wordlist.txt
+git clone https://github.com/spider863644/WiFi-Hack
+```
+```
+cd WiFi-Hack
+```
+```
+python3 wifi.py
+```
+### How to get the activation code
+Firstly, fork this repo and leave a star and then message me on WhatsApp for next step<br><br>
+### Support this project
+Do you love this project?, just buy me a coffee by funding my btc wallet
+```
+
 ```
