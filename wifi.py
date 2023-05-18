@@ -22,14 +22,6 @@ except ModuleNotFoundError:
 from colorama import *
 colorama.init(autoreset=True)
 
-from update_check import isUpToDate, update
-if isUpToDate('wifi.py', 'https://raw.githubusercontent.com/spider863644/Wifi-Hack/main/wifi.py') == False:
-    print(Fore.RED + "This version is outdated, another version is been released\nWill start updating soon")
-    t.sleep(3)
-    update("wifi.py",  "https://raw.githubusercontent.com/spider863644/Wifi-Hack/main/wifi.py")
-    print(Fore.GREEN + "Updated\nRun tool again")
-    t.sleep(3)
-    exit()
 if platform.system() != "Windows":
 	print(Fore.RED + "[!]This tool is not compatible with your operating system\nUse this tool on a windows OS ")
 	t.sleep(3)
@@ -141,7 +133,8 @@ Team: TermuxHackz Society
     		#print('Connected' if connect() else
     		if connect():
     		 	print(Fore.MAGENTA + "Connected to " + SSID)
-    		 	print(Fore.GREEN + "password is " + Fore.CYAN + password)
+    		 	print(Fore.GREEN + "WIFI HACKED!
+    		 	" )
     		 	os.system("pause")
     		 	exit()
     		else:
