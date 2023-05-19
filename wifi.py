@@ -26,12 +26,12 @@ if platform.system() != "Windows":
 	print(Fore.RED + "[!]This tool is not compatible with your operating system\nUse this tool on a windows OS ")
 	t.sleep(3)
 	exit()
-pwdfile = open("config.txt", "r")
-pwd = input(Fore.YELLOW + "Enter activation code: ")
-if pwd != pwdfile.read():
-	print(Fore.RED + "Incorrect Activation code☹️🤓")
-	t.sleep(3)
-	exit()
+#pwdfile = open("config.txt", "r")
+#pwd = input(Fore.YELLOW + "Enter activation code: ")
+#if pwd != pwdfile.read():
+#	print(Fore.RED + "Incorrect Activation code☹️🤓")
+#	t.sleep(3)
+#	exit()
 print(Fore.RED + "Warning[!]: Dear user,you may face error while using this version\nSorry in advance for any incovinience\n")
 t.sleep(3)
 def loop():
