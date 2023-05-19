@@ -132,7 +132,7 @@ Team: TermuxHackz Society
     				
     		#print('Connected' if connect() else
     		if connect():
-    		 	os.system(cls)
+    		 	os.system("cls")
     		 	print(Fore.MAGENTA + "Connected to " + SSID)
     		 	print(Fore.CYAN + "WIFI HACKED!" )
     		 	os.system("pause")
