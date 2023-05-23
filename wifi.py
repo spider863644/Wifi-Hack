@@ -18,14 +18,12 @@ colorama.init(autoreset=True)
 
 #
 
-#if platform.system() != "Windows":
+if platform.system() != "Windows":
 
-#	print(Fore.RED + "[!]This tool is not compatible with your operating system\nUse this tool on a windows OS ")
-
-#	
-# windows OS ")
-
-#	
+	print(Fore.RED + "[!]This tool is not compatible with your operating system\nUse this tool on a windows OS ")
+	t.sleep(2)
+	exit()
+	
 
 #pwdfile = open("config.txt", "r")
 
