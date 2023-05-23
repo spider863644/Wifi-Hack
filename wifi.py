@@ -11,29 +11,30 @@ except ModuleNotFoundError:
     print("Run program again")
     os.system("pause")
     exit()
-try:
-     import update_check
-except ModuleNotFoundError:
-    os.system("pip install update-check")
-    t.sleep(3)
-    print("Run program again")
-    os.system("pause")
-    exit()
 from colorama import *
 colorama.init(autoreset=True)
 
-if platform.system() != "Windows":
-	print(Fore.RED + "[!]This tool is not compatible with your operating system\nUse this tool on a windows OS ")
-	t.sleep(3)
-	exit()
+#oreset=True)
+
+#
+
+#if platform.system() != "Windows":
+
+#	print(Fore.RED + "[!]This tool is not compatible with your operating system\nUse this tool on a windows OS ")
+
+#	
+# windows OS ")
+
+#	
+
 #pwdfile = open("config.txt", "r")
+
 #pwd = input(Fore.YELLOW + "Enter activation code: ")
+
 #if pwd != pwdfile.read():
-#	print(Fore.RED + "Incorrect Activation code☹️🤓")
-#	t.sleep(3)
-#	exit()
-print(Fore.RED + "Warning[!]: Dear user,you may face error while using this version\nSorry in advance for any incovinience\n")
-t.sleep(3)
+
+#	print(Fore.RED + "Incorrect Activation code☹️
+#t.sleep(3)
 def loop():
     os.system("cls")
     def check_connection():
@@ -63,7 +64,7 @@ def loop():
          
 	"""
     print(Fore.RED + header)
-    print(Fore.YELLOW + "version 1.0".center(60))
+    print(Fore.YELLOW + "version 1.1".center(60))
     print(Fore.GREEN + """
 Developer: Spider Anongreyhat
 Team: TermuxHackz Society
@@ -118,9 +119,9 @@ Team: TermuxHackz Society
     		os.system(add_profile)
     		print(Fore.MAGENTA + SSID + " has been added")
     		print(Fore.GREEN + "Connecting to " + SSID)
-    		connect = "netsh wlan connect name=\""+SSID+"\" ssid=\""+SSID+"\" interface=Wi-Fi"
-    		os.system(connect)
-    		t.sleep(4)
+    		connect_to = "netsh wlan connect name=\""+SSID+"\" ssid=\""+SSID+"\" interface=Wi-Fi"
+    		os.system(connect_to)
+    		t.sleep(2.50)
     		def connect():
     			try:
     				urllib.request.urlopen('http://google.com')
@@ -134,7 +135,9 @@ Team: TermuxHackz Society
     		if connect():
     		 	os.system("cls")
     		 	print(Fore.MAGENTA + "Connected to " + SSID)
-    		 	print(Fore.CYAN + "WIFI HACKED!" )
+    		 	print(Fore.GREEN + "WIFI HACKED!\n\nDisplaying Wifi Info" )
+    		 	display_info = "netsh wlan show profile name=\"" + SSID + "\" key=clear"
+    		 	os.system(display_info)
     		 	os.system("pause")
     		 	exit()
     		else:
@@ -147,7 +150,7 @@ Team: TermuxHackz Society
     	os.system("pause")
     	loop()
     elif option == "3":
-    	print(Fore.CYAN + "Version is " + Fore.YELLOW + "v1.0")
+    	print(Fore.CYAN + "Version is " + Fore.YELLOW + "v1.1")
     elif option == "4":
     	os.system("xdg-open https://github.com/spider863644/Wifi-Hack/issues")
     	exit()
