@@ -1,6 +1,6 @@
 # Wifi-Hack
 A hacking tool for brute forcing WiFi password
-This version may not work properly and I'm releasing this for testing purpose only
+
 ## How to install WiFi-Hack 
 ### Step1.
 Click here https://git-scm.com/downloads to install git that is compatible with your windows and setup ur GitHub<br><br>
