@@ -24,6 +24,24 @@ colorama.init(autoreset=True)
 # Get the current operating system
 CURRENT_OS = platform.system()
 
+# Get WiFi interface for macOS
+def get_wifi_interface():
+    if CURRENT_OS == "Darwin":
+        try:
+            result = subprocess.run(["networksetup", "-listallhardwareports"], 
+                                  capture_output=True, text=True, check=True)
+            lines = result.stdout.split('\n')
+            for i, line in enumerate(lines):
+                if "Wi-Fi" in line:
+                    # Next line should contain "Device: enX"
+                    if i + 1 < len(lines) and "Device:" in lines[i + 1]:
+                        return lines[i + 1].split(":")[1].strip()
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            pass
+    return "en0"  # fallback
+
+WIFI_INTERFACE = get_wifi_interface()
+
 # Check if required tools are available
 def check_requirements():
     if CURRENT_OS == "Darwin":  # macOS
@@ -55,6 +73,10 @@ def check_requirements():
 if not check_requirements():
     t.sleep(3)
     exit()
+
+if CURRENT_OS == "Darwin":
+    print(Fore.GREEN + f"[+] Detected WiFi interface: {WIFI_INTERFACE}")
+    t.sleep(1)
 
 #pwdfile = open("config.txt", "r")
 
@@ -135,7 +157,7 @@ def connect_to_wifi(ssid, password):
         
     elif CURRENT_OS == "Darwin":
         # macOS implementation
-        os.system(f'networksetup -setairportnetwork en0 "{ssid}" "{password.strip()}"')
+        os.system(f'networksetup -setairportnetwork {WIFI_INTERFACE} "{ssid}" "{password.strip()}"')
         
     else:  # Linux
         # Linux implementation using nmcli
@@ -145,8 +167,8 @@ def show_wifi_info(ssid):
     if CURRENT_OS == "Windows":
         os.system(f'netsh wlan show profile name="{ssid}" key=clear')
     elif CURRENT_OS == "Darwin":
-        os.system(f'networksetup -getairportnetwork en0')
-        os.system('ifconfig en0')
+        os.system(f'networksetup -getairportnetwork {WIFI_INTERFACE}')
+        os.system(f'ifconfig {WIFI_INTERFACE}')
     else:  # Linux
         os.system('nmcli connection show --active')
         os.system('iwconfig')
@@ -155,14 +177,29 @@ def loop():
     clear_screen()
     def check_connection():
     	try:
-    		urllib.request.urlopen('http://google.com')
+    		urllib.request.urlopen('http://google.com', timeout=3)
     		return True
     	except:
     		return False
-    if check_connection():
-    	print(Fore.RED + "Kindly turn off your mobile data and turn on ur Wifi!")
-    	t.sleep(3)
-    	loop()
+    
+    # Check if we're connected via WiFi instead of mobile data
+    def is_wifi_connected():
+        if CURRENT_OS == "Darwin":
+            try:
+                result = subprocess.run(["networksetup", "-getairportnetwork", WIFI_INTERFACE], 
+                                      capture_output=True, text=True)
+                return "You are not associated with an AirPort network" not in result.stdout
+            except:
+                return False
+        return True  # Skip check for other platforms
+    
+    # Only show the mobile data warning if we have internet but no WiFi connection
+    if check_connection() and not is_wifi_connected():
+    	print(Fore.YELLOW + "Warning: You appear to be connected via mobile data.")
+    	print(Fore.YELLOW + "For best results, connect to WiFi first.")
+    	user_choice = input(Fore.GREEN + "Continue anyway? (y/n): ")
+    	if user_choice.lower() != 'y':
+    		exit()
     header = """
     
  ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄          ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄    ▄ 
