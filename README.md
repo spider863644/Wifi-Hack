@@ -5,10 +5,12 @@ A cross-platform WiFi password brute-forcing tool that works on Windows, macOS, 
 ## 🌟 Features
 
 - **Cross-Platform Support**: Works on Windows, macOS, and Linux
+- **Automatic WiFi Interface Detection**: Dynamically detects correct WiFi interface on macOS
 - **WiFi Network Discovery**: Displays available WiFi networks
 - **Brute Force Attack**: Dictionary-based password cracking
 - **Colored Terminal Output**: Enhanced user experience with colorama
 - **Platform-Specific Commands**: Uses native networking tools for each OS
+- **Smart Connection Logic**: Improved network connection detection and handling
 
 ## 🖥️ Platform Support
 
@@ -50,14 +52,20 @@ pip install -r requirements.txt
 
 ### Step 3: Run the Tool
 ```bash
+# Basic usage
 python3 wifi.py
+
+# For WiFi hacking on macOS/Linux (requires admin privileges)
+sudo python3 wifi.py
 ```
 
 ## 📖 Usage
 
-1. **Launch the tool**: Run `python3 wifi.py`
+1. **Launch the tool**: 
+   - Basic usage: `python3 wifi.py`
+   - For WiFi hacking: `sudo python3 wifi.py` (macOS/Linux)
 2. **Select an option**:
-   - `[1]` Hack WiFi - Start brute force attack
+   - `[1]` Hack WiFi - Start brute force attack (requires admin privileges)
    - `[2]` Display available networks - Scan for WiFi networks
    - `[3]` Check version - Show tool version and platform info
    - `[4]` Report issues - Open GitHub issues page
@@ -90,24 +98,35 @@ WiFi-Hack/
 
 ### Platform-Specific Behavior
 - **Windows**: Creates XML profiles for WiFi connections
-- **macOS**: May require administrator privileges for network changes
+- **macOS**: 
+  - Automatically detects WiFi interface (e.g., en0, en1, etc.)
+  - Requires administrator privileges for network changes (`sudo`)
+  - Uses `networksetup` and `airport` utilities
 - **Linux**: Requires NetworkManager service to be running
 
 ## 🐛 Troubleshooting
 
 ### Common Issues
 
-1. **"networksetup not found" (macOS)**
+1. **Script stuck in loop or won't start (Fixed in v1.1+)**
+   - Updated connection logic resolves infinite loop issues
+   - Smart detection of WiFi vs mobile data connections
+
+2. **"networksetup not found" (macOS)**
    - This utility should be built-in. Try running with `sudo`
 
-2. **"nmcli not found" (Linux)**
+3. **Wrong WiFi interface detected (Fixed in v1.1+)**
+   - Script now automatically detects correct WiFi interface
+   - No longer assumes en0 for all Mac systems
+
+4. **"nmcli not found" (Linux)**
    - Install NetworkManager: `sudo apt-get install network-manager`
 
-3. **Permission denied errors**
+5. **Permission denied errors**
    - Run with administrator/root privileges when necessary
    - On macOS/Linux: `sudo python3 wifi.py`
 
-4. **No networks showing**
+6. **No networks showing**
    - Ensure WiFi adapter is enabled
    - Check if WiFi scanning requires elevated privileges
 
